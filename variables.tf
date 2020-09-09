@@ -31,6 +31,7 @@ variable "network_policies" {
     protocol        = string
     port            = string
   }))
+  default = []
 }
 variable "memory" {
   type        = number
