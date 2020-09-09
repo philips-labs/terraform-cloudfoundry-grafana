@@ -1,3 +1,5 @@
+<img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" width="500px">
+
 # terraform-cloudfoundry-grafana
 Deploys a Grafana instance to Cloud foundry
 
