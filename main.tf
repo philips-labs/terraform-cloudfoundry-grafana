@@ -20,6 +20,7 @@ resource "cloudfoundry_app" "grafana" {
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.grafana_image
+  environment  = var.environment
 
   routes {
     route = cloudfoundry_route.grafana.id

@@ -19,6 +19,11 @@ variable "name_postfix" {
   type        = string
   description = "The postfix string to append to the hostname, prevents namespace clashes"
 }
+variable "environment" {
+  type        = map
+  description = "Environment variables for Grafana app"
+  default     = {}
+}
 variable "network_policies" {
   description = "The container-to-container network policies to create with Grafana as the source app"
   type = list(object({
