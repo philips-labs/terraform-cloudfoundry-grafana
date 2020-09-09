@@ -34,6 +34,8 @@ resource "cloudfoundry_route" "grafana" {
 }
 
 resource "cloudfoundry_network_policy" "grafana" {
+  count = length(var.network_policies) > 0 ? 1 : 0
+
   dynamic "policy" {
     for_each = [for p in var.network_policies : {
       destination_app = p.destination_app
