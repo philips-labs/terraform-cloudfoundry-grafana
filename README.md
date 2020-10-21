@@ -3,6 +3,12 @@
 # terraform-cloudfoundry-grafana
 Deploys a Grafana instance to Cloud foundry
 
+# Contact / Getting help
+andy.lo-a-foe@philips.com
+
+# License
+License is MIT
+
 ## Requirements
 
 | Name | Version |
@@ -24,6 +30,7 @@ Deploys a Grafana instance to Cloud foundry
 | cf\_org | The CF Org to deploy under | `string` | n/a | yes |
 | cf\_space | The CF Space to deploy in | `string` | n/a | yes |
 | db\_broker | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
+| db\_json\_params | Optional DB JSON params | `string` | `"{}"` | no |
 | db\_plan | The Database plan to use | `string` | `"postgres-micro-dev"` | no |
 | disk | The amount of Disk space to allocate for Grafana (MB) | `number` | `1024` | no |
 | environment | Environment variables for Grafana app | `map` | `{}` | no |
@@ -37,9 +44,3 @@ Deploys a Grafana instance to Cloud foundry
 | Name | Description |
 |------|-------------|
 | grafana\_endpoint | The endpoint where Grafana is reachable on |
-
-# Contact / Getting help
-andy.lo-a-foe@philips.com
-
-# License
-License is MIT

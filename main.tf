@@ -20,11 +20,31 @@ resource "cloudfoundry_app" "grafana" {
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.grafana_image
-  environment  = var.environment
+  environment = merge(var.environment,
+    {
+      "GF_DATABASE_HOST"     = cloudfoundry_service_key.database_key.credentials.hostname
+      "GF_DATABASE_NAME"     = cloudfoundry_service_key.database_key.credentials.db_name
+      "GF_DATABASE_TYPE"     = "postgres"
+      "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key.credentials.username
+      "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key.credentials.password
+    }
+  )
 
   routes {
     route = cloudfoundry_route.grafana.id
   }
+}
+
+resource "cloudfoundry_service_instance" "database" {
+  name         = "grafana-rds"
+  space        = data.cloudfoudry_space.space.id
+  service_plan = data.cloudfoundry_service.rds.service_plans[var.db_plan]
+  json_params  = var.db_json_params
+}
+
+resource "cloudfoundry_service_key" "database_key" {
+  name    = "key"
+  service = cloudfoundry_service_instance.database.id
 }
 
 resource "cloudfoundry_route" "grafana" {

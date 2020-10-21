@@ -53,3 +53,9 @@ variable "db_plan" {
   description = "The Database plan to use"
   default     = "postgres-micro-dev"
 }
+
+variable "db_json_params" {
+  type        = string
+  description = "Optional DB JSON params"
+  default     = "{}"
+}
