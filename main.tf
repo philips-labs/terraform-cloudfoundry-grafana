@@ -27,6 +27,7 @@ resource "cloudfoundry_app" "grafana" {
       "GF_DATABASE_TYPE"     = "postgres"
       "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key.credentials.username
       "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key.credentials.password
+      "GF_SERVER_ROOT_URL"   = "http://${cloudfoundry_route.grafana.endpoint}"
     }
   )
 
