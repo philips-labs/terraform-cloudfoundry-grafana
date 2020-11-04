@@ -59,3 +59,9 @@ variable "db_json_params" {
   description = "Optional DB JSON params"
   default     = "{}"
 }
+
+variable "enable_postgres" {
+  type        = bool
+  description = "Enable or disables postgres persistence"
+  default     = true
+}

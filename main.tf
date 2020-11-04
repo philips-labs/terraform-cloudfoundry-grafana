@@ -21,12 +21,15 @@ resource "cloudfoundry_app" "grafana" {
   disk_quota   = var.disk
   docker_image = var.grafana_image
   environment = merge(var.environment,
+    var.enable_postgres ?
     {
-      "GF_DATABASE_HOST"     = cloudfoundry_service_key.database_key.credentials.hostname
-      "GF_DATABASE_NAME"     = cloudfoundry_service_key.database_key.credentials.db_name
+      "GF_DATABASE_HOST"     = cloudfoundry_service_key.database_key[0].credentials.hostname
+      "GF_DATABASE_NAME"     = cloudfoundry_service_key.database_key[0].credentials.db_name
       "GF_DATABASE_TYPE"     = "postgres"
-      "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key.credentials.username
-      "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key.credentials.password
+      "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key[0].credentials.username
+      "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key[0].credentials.password
+      } : {
+      "GF_DATABASE" = "disabled"
     }
   )
 
@@ -36,6 +39,7 @@ resource "cloudfoundry_app" "grafana" {
 }
 
 resource "cloudfoundry_service_instance" "database" {
+  count        = var.enable_postgres ? 1 : 0
   name         = "grafana-rds"
   space        = data.cloudfoundry_space.space.id
   service_plan = data.cloudfoundry_service.rds.service_plans[var.db_plan]
@@ -43,8 +47,9 @@ resource "cloudfoundry_service_instance" "database" {
 }
 
 resource "cloudfoundry_service_key" "database_key" {
-  name    = "key"
-  service_instance = cloudfoundry_service_instance.database.id
+  count            = var.enable_postgres ? 1 : 0
+  name             = "key"
+  service_instance = cloudfoundry_service_instance.database[0].id
 }
 
 resource "cloudfoundry_route" "grafana" {
