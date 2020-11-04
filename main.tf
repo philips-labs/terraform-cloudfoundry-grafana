@@ -44,6 +44,11 @@ resource "cloudfoundry_service_instance" "database" {
   space        = data.cloudfoundry_space.space.id
   service_plan = data.cloudfoundry_service.rds.service_plans[var.db_plan]
   json_params  = var.db_json_params
+
+  timeouts {
+    create = "30m"
+    delete = "30m"
+  }
 }
 
 resource "cloudfoundry_service_key" "database_key" {
