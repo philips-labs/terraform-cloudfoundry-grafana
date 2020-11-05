@@ -29,6 +29,7 @@ resource "cloudfoundry_app" "grafana" {
       "GF_SERVER_ROOT_URL"   = "http://${cloudfoundry_route.grafana.endpoint}"
       "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key[0].credentials.username
       "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key[0].credentials.password
+    } : {
       "GF_DATABASE" = "disabled"
     }
   )
