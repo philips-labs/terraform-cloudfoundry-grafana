@@ -20,7 +20,7 @@ resource "cloudfoundry_app" "grafana" {
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.grafana_image
-  environment = merge(var.environment,
+  environment = merge(
     var.enable_postgres ?
     {
       "GF_DATABASE_HOST"     = cloudfoundry_service_key.database_key[0].credentials.hostname
@@ -31,7 +31,8 @@ resource "cloudfoundry_app" "grafana" {
       "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key[0].credentials.password
     } : {
       "GF_DATABASE" = "disabled"
-    }
+    },
+    var.environment
   )
 
   routes {
