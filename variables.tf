@@ -20,7 +20,7 @@ variable "name_postfix" {
   description = "The postfix string to append to the hostname, prevents namespace clashes"
 }
 variable "environment" {
-  type        = map
+  type        = map(any)
   description = "Environment variables for Grafana app"
   default     = {}
 }

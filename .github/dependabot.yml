@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "terraform"
+    directory: "/examples/default"
+    schedule:
+      interval: "weekly"
+    commit_message:
+      prefix: "chore"
+
+  # Enable version updates for Docker
+  - package-ecosystem: "actions"
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+    commit_message:
+      prefix: "chore"
