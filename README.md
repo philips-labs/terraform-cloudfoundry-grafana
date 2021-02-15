@@ -3,12 +3,11 @@
 # terraform-cloudfoundry-grafana
 Deploys a Grafana instance to Cloud foundry
 
-# Contact / Getting help
-andy.lo-a-foe@philips.com
+# Usages
 
-# License
-License is MIT
+Checkout the example in [examples/default](./examples/default)
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -33,7 +32,8 @@ License is MIT
 | db\_json\_params | Optional DB JSON params | `string` | `"{}"` | no |
 | db\_plan | The Database plan to use | `string` | `"postgres-micro-dev"` | no |
 | disk | The amount of Disk space to allocate for Grafana (MB) | `number` | `1024` | no |
-| environment | Environment variables for Grafana app | `map` | `{}` | no |
+| enable\_postgres | Enable or disables postgres persistence | `bool` | `true` | no |
+| environment | Environment variables for Grafana app | `map(any)` | `{}` | no |
 | grafana\_image | Grafana Docker image to use | `string` | `"grafana/grafana:latest"` | no |
 | memory | The amount of RAM to allocate for Grafana (MB) | `number` | `512` | no |
 | name\_postfix | The postfix string to append to the hostname, prevents namespace clashes | `string` | n/a | yes |
@@ -44,3 +44,12 @@ License is MIT
 | Name | Description |
 |------|-------------|
 | grafana\_endpoint | The endpoint where Grafana is reachable on |
+| grafana\_id | The Grafana's id |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+# Contact / Getting help
+andy.lo-a-foe@philips.com
+
+# License
+[License](./LICENSE.md) is MIT
