@@ -9,7 +9,7 @@ updates:
 
   # Enable version updates for Docker
   - package-ecosystem: "github-actions"
-    directory: "/.github/workflows"
+    directory: "/"
     schedule:
       interval: "weekly"
     commit_message:
