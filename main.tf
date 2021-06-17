@@ -19,7 +19,7 @@ locals {
 }
 
 resource "cloudfoundry_app" "grafana" {
-  name         = local.name
+  name         = "tf-${local.name}"
   space        = data.cloudfoundry_space.space.id
   memory       = var.memory
   disk_quota   = var.disk
