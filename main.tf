@@ -14,8 +14,12 @@ data "cloudfoundry_domain" "domain" {
   name = var.cf_domain
 }
 
+locals {
+  name = var.name_postfix == "" ? "grafana" : "grafana-${var.name_postfix}"
+}
+
 resource "cloudfoundry_app" "grafana" {
-  name         = "grafana"
+  name         = local.name
   space        = data.cloudfoundry_space.space.id
   memory       = var.memory
   disk_quota   = var.disk
@@ -57,7 +61,7 @@ resource "cloudfoundry_service_key" "database_key" {
 resource "cloudfoundry_route" "grafana" {
   domain   = data.cloudfoundry_domain.domain.id
   space    = data.cloudfoundry_space.space.id
-  hostname = var.name_postfix == "" ? "grafana" : "grafana-${var.name_postfix}"
+  hostname = local.name
 }
 
 resource "cloudfoundry_network_policy" "grafana" {
