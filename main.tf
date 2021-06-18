@@ -27,16 +27,20 @@ resource "cloudfoundry_app" "grafana" {
   environment = merge(
     var.enable_postgres ?
     {
-      "GF_DATABASE_HOST"     = cloudfoundry_service_key.database_key[0].credentials.hostname
-      "GF_DATABASE_NAME"     = cloudfoundry_service_key.database_key[0].credentials.db_name
-      "GF_DATABASE_TYPE"     = "postgres"
-      "GF_SERVER_ROOT_URL"   = "https://${cloudfoundry_route.grafana.endpoint}"
-      "GF_DATABASE_USER"     = cloudfoundry_service_key.database_key[0].credentials.username
-      "GF_DATABASE_PASSWORD" = cloudfoundry_service_key.database_key[0].credentials.password
+      GF_DATABASE_HOST     = cloudfoundry_service_key.database_key[0].credentials.hostname
+      GF_DATABASE_NAME     = cloudfoundry_service_key.database_key[0].credentials.db_name
+      GF_DATABASE_TYPE     = "postgres"
+      GF_SERVER_ROOT_URL   = "https://${cloudfoundry_route.grafana.endpoint}"
+      GF_DATABASE_USER     = cloudfoundry_service_key.database_key[0].credentials.username
+      GF_DATABASE_PASSWORD = cloudfoundry_service_key.database_key[0].credentials.password
       } : {
-      "GF_DATABASE" = "disabled"
+      GF_DATABASE = "disabled"
     },
-    var.environment
+    var.environment,
+    {
+      GF_SECURITY_ADMIN_USER     = var.grafana_username
+      GF_SECURITY_ADMIN_PASSWORD = var.grafana_password
+    }
   )
 
   routes {

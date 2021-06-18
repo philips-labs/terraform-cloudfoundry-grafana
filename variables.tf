@@ -33,6 +33,7 @@ variable "network_policies" {
   }))
   default = []
 }
+
 variable "memory" {
   type        = number
   description = "The amount of RAM to allocate for Grafana (MB)"
@@ -64,4 +65,14 @@ variable "enable_postgres" {
   type        = bool
   description = "Enable or disables postgres persistence"
   default     = true
+}
+
+variable "grafana_username" {
+  type        = string
+  description = "The Grafana username to use"
+}
+
+variable "grafana_password" {
+  type        = string
+  description = "The Grafana password to use"
 }
