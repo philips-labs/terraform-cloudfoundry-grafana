@@ -13,7 +13,7 @@ jobs:
     name: Verify module
     strategy:
       matrix:
-        terraform: [0.14.5]    
+        terraform: [1.0.0]
     runs-on: ubuntu-latest
     container:
       image: hashicorp/terraform:${{ matrix.terraform }}
@@ -29,7 +29,7 @@ jobs:
     name: Verify examples
     strategy:
       matrix:
-        terraform: [0.13.6, 0.14.5, latest]
+        terraform: [0.14.5, latest]
         example: ["default"]
     defaults:
       run:
