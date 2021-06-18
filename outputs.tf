@@ -10,11 +10,16 @@ output "grafana_id" {
 
 output "grafana_database_metrics_endpoint" {
   description = "The internal metrics endpoint for the Grafana database"
-  value       = "http://${join("", cloudfoundry_route.pg_exporter.*.endpoint)}:9187/metrics"
+  value       = "${join("", cloudfoundry_route.pg_exporter.*.endpoint)}:9187"
+}
+
+output "grafana_database_metrics_host" {
+  description = "The Grafana metrics internal hostname"
+  value       = join("", cloudfoundry_route.pg_exporter.*.endpoint)
 }
 
 output "grafana_database_metrics_port" {
-  description = "The Grafa metrics internal port"
+  description = "The Grafana metrics internal port"
   value       = "9187"
 }
 
