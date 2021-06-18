@@ -68,11 +68,11 @@ variable "enable_postgres" {
 }
 
 variable "grafana_username" {
-  type = string
+  type        = string
   description = "The Grafana username to use"
 }
 
 variable "grafana_password" {
-  type = string
+  type        = string
   description = "The Grafana password to use"
 }

@@ -38,7 +38,7 @@ resource "cloudfoundry_app" "grafana" {
     },
     var.environment,
     {
-      GF_SECURITY_ADMIN_USER = var.grafana_username
+      GF_SECURITY_ADMIN_USER     = var.grafana_username
       GF_SECURITY_ADMIN_PASSWORD = var.grafana_password
     }
   )
