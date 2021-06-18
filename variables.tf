@@ -76,3 +76,8 @@ variable "grafana_password" {
   type        = string
   description = "The Grafana password to use"
 }
+
+variable "pg_exporter_image" {
+  type    = string
+  default = "quay.io/prometheuscommunity/postgres-exporter:latest"
+}

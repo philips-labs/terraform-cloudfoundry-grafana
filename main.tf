@@ -14,6 +14,10 @@ data "cloudfoundry_domain" "domain" {
   name = var.cf_domain
 }
 
+data "cloudfoundry_domain" "internal" {
+  name = "apps.internal"
+}
+
 locals {
   name = var.name_postfix == "" ? "grafana" : "grafana-${var.name_postfix}"
 }
@@ -59,7 +63,7 @@ resource "cloudfoundry_service_instance" "database" {
 resource "cloudfoundry_service_key" "database_key" {
   count            = var.enable_postgres ? 1 : 0
   name             = "key"
-  service_instance = cloudfoundry_service_instance.database[0].id
+  service_instance = cloudfoundry_service_instance.database[count.index].id
 }
 
 resource "cloudfoundry_route" "grafana" {
@@ -84,4 +88,28 @@ resource "cloudfoundry_network_policy" "grafana" {
       port            = policy.value.port
     }
   }
+}
+
+## Monitor
+resource "cloudfoundry_app" "pg_exporter" {
+  memory       = 64
+  count        = var.enable_postgres ? 1 : 0
+  name         = "tf-pgexporter-${local.name}"
+  space        = data.cloudfoundry_space.space.id
+  docker_image = var.pg_exporter_image
+
+  environment = {
+    DATA_SOURCE_NAME = cloudfoundry_service_key.database_key[count.index].credentials.uri
+  }
+
+  routes {
+    route = cloudfoundry_route.pg_exporter[count.index].id
+  }
+}
+
+resource "cloudfoundry_route" "pg_exporter" {
+  count    = var.enable_postgres ? 1 : 0
+  domain   = data.cloudfoundry_domain.internal.id
+  space    = data.cloudfoundry_space.space.id
+  hostname = "tf-pgexporter-${local.name}"
 }
