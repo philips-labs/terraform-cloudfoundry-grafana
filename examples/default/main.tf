@@ -3,7 +3,7 @@ module "grafana" {
 
   cf_domain        = "eu-west.philips-healthsuite.com"
   cf_org           = "abc-eu"
-  cf_space         = "my-space"
+  cf_space_id      = "my-space-id"
   name_postfix     = "default"
   grafana_username = "admin"
   grafana_password = "password"

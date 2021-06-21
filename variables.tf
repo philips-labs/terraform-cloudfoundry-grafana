@@ -7,9 +7,9 @@ variable "cf_org" {
   type        = string
   description = "The CF Org to deploy under"
 }
-variable "cf_space" {
+variable "cf_space_id" {
   type        = string
-  description = "The CF Space to deploy in"
+  description = "The id of the CF Space to deploy in"
 }
 variable "cf_domain" {
   type        = string
