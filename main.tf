@@ -1,10 +1,6 @@
 data "cloudfoundry_org" "org" {
   name = var.cf_org
 }
-data "cloudfoundry_space" "space" {
-  org  = data.cloudfoundry_org.org.id
-  name = var.cf_space
-}
 
 data "cloudfoundry_service" "rds" {
   name = var.db_broker
@@ -24,7 +20,7 @@ locals {
 
 resource "cloudfoundry_app" "grafana" {
   name         = "tf-${local.name}"
-  space        = data.cloudfoundry_space.space.id
+  space        = var.cf_space_id
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.grafana_image
@@ -55,7 +51,7 @@ resource "cloudfoundry_app" "grafana" {
 resource "cloudfoundry_service_instance" "database" {
   count        = var.enable_postgres ? 1 : 0
   name         = "tf-${local.name}-rds"
-  space        = data.cloudfoundry_space.space.id
+  space        = var.cf_space_id
   service_plan = data.cloudfoundry_service.rds.service_plans[var.db_plan]
   json_params  = var.db_json_params
 }
@@ -68,7 +64,7 @@ resource "cloudfoundry_service_key" "database_key" {
 
 resource "cloudfoundry_route" "grafana" {
   domain   = data.cloudfoundry_domain.domain.id
-  space    = data.cloudfoundry_space.space.id
+  space    = var.cf_space_id
   hostname = local.name
 }
 
@@ -95,7 +91,7 @@ resource "cloudfoundry_app" "pg_exporter" {
   memory       = 64
   count        = var.enable_postgres ? 1 : 0
   name         = "tf-pgexporter-${local.name}"
-  space        = data.cloudfoundry_space.space.id
+  space        = var.cf_space_id
   docker_image = var.pg_exporter_image
 
   environment = {
@@ -110,6 +106,6 @@ resource "cloudfoundry_app" "pg_exporter" {
 resource "cloudfoundry_route" "pg_exporter" {
   count    = var.enable_postgres ? 1 : 0
   domain   = data.cloudfoundry_domain.internal.id
-  space    = data.cloudfoundry_space.space.id
+  space    = var.cf_space_id
   hostname = "tf-pgexporter-${local.name}"
 }
