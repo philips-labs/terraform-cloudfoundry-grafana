@@ -2,7 +2,7 @@ resource "cloudfoundry_app" "pg_exporter" {
   memory       = 64
   count        = var.enable_postgres ? 1 : 0
   name         = "tf-pgexporter-${local.name}"
-  space        = data.cloudfoundry_space.space.id
+  space        = var.cf_space_id
   docker_image = var.pg_exporter_image
 
   environment = {
@@ -26,6 +26,6 @@ resource "cloudfoundry_app" "pg_exporter" {
 resource "cloudfoundry_route" "pg_exporter" {
   count    = var.enable_postgres ? 1 : 0
   domain   = data.cloudfoundry_domain.internal.id
-  space    = data.cloudfoundry_space.space.id
+  space    = var.cf_space_id
   hostname = "tf-pgexporter-${local.name}"
 }
