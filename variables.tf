@@ -81,3 +81,15 @@ variable "pg_exporter_image" {
   type    = string
   default = "quay.io/prometheuscommunity/postgres-exporter:latest"
 }
+
+variable "iam_application_id" {
+  type        = string
+  description = "The IAM application ID to create the OAuth2 client. If provided, Grafana will use IAM for authentication"
+  default     = ""
+}
+
+variable "email_domains" {
+  type        = list(string)
+  description = "Allowed email domains for accessing Grafana"
+  default     = ["philips.com"]
+}
