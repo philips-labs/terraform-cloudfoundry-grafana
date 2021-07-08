@@ -8,8 +8,7 @@ Deploys a Grafana instance to Cloud foundry
 
 Checkout the example in [examples/default](./examples/default)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
+<!--- BEGIN_TF_DOCS --->
 ## Requirements
 
 | Name                                                                              | Version   |
@@ -75,12 +74,11 @@ No modules.
 | <a name="output_grafana_endpoint"></a> [grafana_endpoint](#output_grafana_endpoint)                                                    | The endpoint where Grafana is reachable on             |
 | <a name="output_grafana_id"></a> [grafana_id](#output_grafana_id)                                                                      | The Grafana app ID                                     |
 
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!--- END_TF_DOCS --->
 
 # Contact / Getting help
 
-andy.lo-a-foe@philips.com
+Please post your questions on the HSDP Slack `#terraform` channel
 
 # License
-
 [License](./LICENSE.md) is MIT
