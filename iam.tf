@@ -19,9 +19,9 @@ resource "random_uuid" "client_uuid" {
 resource "hsdp_iam_client" "grafana" {
   count               = local.iam_integration ? 1 : 0
   type                = "Confidential"
-  name                = "TF_GRAFANA_${local.name}"
+  name                = "Grafana"
   description         = "Grafana OAuth2 Client"
-  client_id           = "tf_grafana_${local.name}"
+  client_id           = "tf_${local.name}"
   global_reference_id = random_uuid.client_uuid.result
   application_id      = var.iam_application_id
   password            = random_password.client_password[count.index].result
@@ -30,6 +30,6 @@ resource "hsdp_iam_client" "grafana" {
   response_types      = ["code"]
   //noinspection HILUnresolvedReference
   redirection_uris = [
-    "https://${cloudfoundry_route.grafana.endpoint}/grafana/login/generic_oauth"
+    "https://${cloudfoundry_route.grafana.endpoint}/login/generic_oauth"
   ]
 }

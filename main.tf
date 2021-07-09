@@ -19,7 +19,7 @@ data "hsdp_config" "iam" {
 }
 
 locals {
-  name = var.name_postfix == "" ? "grafana" : "grafana-${var.name_postfix}"
+  name = var.name_postfix == "" ? "gf" : "gf-${var.name_postfix}"
 }
 
 //noinspection HILUnresolvedReference
