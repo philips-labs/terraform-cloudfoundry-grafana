@@ -4,3 +4,7 @@ provider "cloudfoundry" {
   password            = var.cf_password
   skip_ssl_validation = false
 }
+
+provider "hsdp" {
+  region = "eu-west"
+}

@@ -3,7 +3,7 @@ variable "grafana_image" {
   description = "Grafana Docker image to use"
   default     = "grafana/grafana:8.0.4"
 }
-variable "cf_org" {
+variable "cf_org_name" {
   type        = string
   description = "The CF Org to deploy under"
 }
@@ -80,4 +80,28 @@ variable "grafana_password" {
 variable "pg_exporter_image" {
   type    = string
   default = "quay.io/prometheuscommunity/postgres-exporter:latest"
+}
+
+variable "iam_application_id" {
+  type        = string
+  description = "The IAM application ID to create the OAuth2 client. If provided, Grafana will use IAM for authentication"
+  default     = ""
+}
+
+variable "email_domains" {
+  type        = list(string)
+  description = "Allowed email domains for accessing Grafana"
+  default     = ["philips.com"]
+}
+
+variable "oauth_allow_signup" {
+  type        = bool
+  description = "Allow automatic signup when OAuth2 is enabled"
+  default     = false
+}
+
+variable "auto_assign_org_role" {
+  type        = string
+  description = "The default role to assign to auto signup users"
+  default     = "Viewer"
 }
