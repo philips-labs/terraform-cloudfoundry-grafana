@@ -43,7 +43,6 @@ resource "cloudfoundry_app" "grafana" {
     },
     local.iam_integration ?
     {
-      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP            = "false"
       GF_AUTH_GENERIC_OAUTH_ALLOWED_DOMAINS          = join(",", var.email_domains)
       GF_AUTH_GENERIC_OAUTH_API_URL                  = "${data.hsdp_config.iam.url}/authorize/oauth2/userinfo?api-version=2"
       GF_AUTH_GENERIC_OAUTH_AUTH_URL                 = "${data.hsdp_config.iam.url}/authorize/oauth2/authorize?api-version=2"
@@ -54,6 +53,8 @@ resource "cloudfoundry_app" "grafana" {
       GF_AUTH_GENERIC_OAUTH_SCOPES                   = "openid mail email"
       GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE = "false"
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL                = "${data.hsdp_config.iam.url}/authorize/oauth2/token?api-version=2"
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP            = var.oauth_allow_signup
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE                  = var.auto_assign_org_role
     } : {},
     var.environment,
     {

@@ -93,3 +93,15 @@ variable "email_domains" {
   description = "Allowed email domains for accessing Grafana"
   default     = ["philips.com"]
 }
+
+variable "oauth_allow_signup" {
+  type        = bool
+  description = "Allow automatic signup when OAuth2 is enabled"
+  default     = false
+}
+
+variable "auto_assign_org_role" {
+  type        = string
+  description = "The default role to assign to auto signup users"
+  default     = "Viewer"
+}
