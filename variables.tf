@@ -3,7 +3,7 @@ variable "grafana_image" {
   description = "Grafana Docker image to use"
   default     = "grafana/grafana:8.0.4"
 }
-variable "cf_org" {
+variable "cf_org_name" {
   type        = string
   description = "The CF Org to deploy under"
 }
