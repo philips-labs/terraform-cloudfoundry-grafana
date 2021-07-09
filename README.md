@@ -50,7 +50,7 @@ No Modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | cf\_domain | The CF domain to use for Grafana | `string` | n/a | yes |
-| cf\_org | The CF Org to deploy under | `string` | n/a | yes |
+| cf\_org\_name | The CF Org to deploy under | `string` | n/a | yes |
 | cf\_space\_id | The id of the CF Space to deploy in | `string` | n/a | yes |
 | db\_broker | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
 | db\_json\_params | Optional DB JSON params | `string` | `"{}"` | no |
