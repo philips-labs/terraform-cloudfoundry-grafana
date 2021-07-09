@@ -49,6 +49,7 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| auto\_assign\_org\_role | The default role to assign to auto signup users | `string` | `"Viewer"` | no |
 | cf\_domain | The CF domain to use for Grafana | `string` | n/a | yes |
 | cf\_org\_name | The CF Org to deploy under | `string` | n/a | yes |
 | cf\_space\_id | The id of the CF Space to deploy in | `string` | n/a | yes |
@@ -66,6 +67,7 @@ No Modules.
 | memory | The amount of RAM to allocate for Grafana (MB) | `number` | `512` | no |
 | name\_postfix | The postfix string to append to the hostname, prevents namespace clashes | `string` | n/a | yes |
 | network\_policies | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
+| oauth\_allow\_signup | Allow automatic signup when OAuth2 is enabled | `bool` | `false` | no |
 | pg\_exporter\_image | n/a | `string` | `"quay.io/prometheuscommunity/postgres-exporter:latest"` | no |
 
 ## Outputs
