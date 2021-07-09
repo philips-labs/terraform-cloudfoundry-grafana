@@ -17,9 +17,10 @@ resource "cloudfoundry_app" "pg_exporter" {
     "variant.tva/exporter" = true,
   }
   annotations = {
-    "prometheus.exporter.group"    = "pg_exporter"
-    "prometheus.exporter.port"     = "9187"
-    "prometheus.exporter.endpoint" = "/metrics"
+    "prometheus.exporter.instance_name" = "grafana-database-${local.name}"
+    "prometheus.exporter.group"         = "pg_exporter"
+    "prometheus.exporter.port"          = "9187"
+    "prometheus.exporter.endpoint"      = "/metrics"
   }
 }
 
