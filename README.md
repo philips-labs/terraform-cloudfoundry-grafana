@@ -50,7 +50,7 @@ No Modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | auto\_assign\_org\_role | The default role to assign to auto signup users | `string` | `"Viewer"` | no |
-| cf\_domain | The CF domain to use for Grafana | `string` | n/a | yes |
+| cf\_domain\_name | The CF domain to use for Grafana | `string` | `""` | no |
 | cf\_org\_name | The CF Org to deploy under | `string` | n/a | yes |
 | cf\_space\_id | The id of the CF Space to deploy in | `string` | n/a | yes |
 | db\_broker | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
