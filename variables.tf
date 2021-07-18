@@ -11,9 +11,10 @@ variable "cf_space_id" {
   type        = string
   description = "The id of the CF Space to deploy in"
 }
-variable "cf_domain" {
+variable "cf_domain_name" {
   type        = string
   description = "The CF domain to use for Grafana"
+  default     = ""
 }
 variable "name_postfix" {
   type        = string

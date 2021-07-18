@@ -7,7 +7,7 @@ data "cloudfoundry_service" "rds" {
 }
 
 data "cloudfoundry_domain" "domain" {
-  name = var.cf_domain
+  name = local.domain
 }
 
 data "cloudfoundry_domain" "internal" {
@@ -18,8 +18,13 @@ data "hsdp_config" "iam" {
   service = "iam"
 }
 
+data "hsdp_config" "cf" {
+  service = "cf"
+}
+
 locals {
-  name = var.name_postfix == "" ? "gf" : "gf-${var.name_postfix}"
+  name   = var.name_postfix == "" ? "gf" : "gf-${var.name_postfix}"
+  domain = var.cf_domain_name == "" ? data.hsdp_config.cf.domain : var.cf_domain_name
 }
 
 //noinspection HILUnresolvedReference
