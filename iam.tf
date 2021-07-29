@@ -10,7 +10,7 @@ resource "random_password" "client_password" {
   min_lower        = 1
   min_numeric      = 1
   min_special      = 1
-  override_special = "-!@#.:_?{$}"
+  override_special = "-!@#.:_?{$"
 }
 
 resource "random_uuid" "client_uuid" {
