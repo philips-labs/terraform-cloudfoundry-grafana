@@ -60,7 +60,7 @@ No Modules.
 | email\_domains | Allowed email domains for accessing Grafana | `list(string)` | <pre>[<br>  "philips.com"<br>]</pre> | no |
 | enable\_postgres | Enable or disables postgres persistence | `bool` | `true` | no |
 | environment | Environment variables for Grafana app | `map(any)` | `{}` | no |
-| grafana\_image | Grafana Docker image to use | `string` | `"grafana/grafana:8.0.4"` | no |
+| grafana\_image | Grafana Docker image to use | `string` | `"grafana/grafana:8.0.6"` | no |
 | grafana\_password | The Grafana password to use | `string` | n/a | yes |
 | grafana\_username | The Grafana username to use | `string` | n/a | yes |
 | iam\_application\_id | The IAM application ID to create the OAuth2 client. If provided, Grafana will use IAM for authentication | `string` | `""` | no |
