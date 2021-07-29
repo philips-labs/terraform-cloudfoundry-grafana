@@ -1,5 +1,5 @@
 data "cloudfoundry_org" "org" {
-  name = var.cf_org
+  name = var.cf_org_name
 }
 
 data "cloudfoundry_service" "rds" {
@@ -7,17 +7,27 @@ data "cloudfoundry_service" "rds" {
 }
 
 data "cloudfoundry_domain" "domain" {
-  name = var.cf_domain
+  name = local.domain
 }
 
 data "cloudfoundry_domain" "internal" {
   name = "apps.internal"
 }
 
-locals {
-  name = var.name_postfix == "" ? "grafana" : "grafana-${var.name_postfix}"
+data "hsdp_config" "iam" {
+  service = "iam"
 }
 
+data "hsdp_config" "cf" {
+  service = "cf"
+}
+
+locals {
+  name   = var.name_postfix == "" ? "gf" : "gf-${var.name_postfix}"
+  domain = var.cf_domain_name == "" ? data.hsdp_config.cf.domain : var.cf_domain_name
+}
+
+//noinspection HILUnresolvedReference
 resource "cloudfoundry_app" "grafana" {
   name         = "tf-${local.name}"
   space        = var.cf_space_id
@@ -36,6 +46,21 @@ resource "cloudfoundry_app" "grafana" {
       } : {
       GF_DATABASE = "disabled"
     },
+    local.iam_integration ?
+    {
+      GF_AUTH_GENERIC_OAUTH_ALLOWED_DOMAINS          = join(",", var.email_domains)
+      GF_AUTH_GENERIC_OAUTH_API_URL                  = "${data.hsdp_config.iam.url}/authorize/oauth2/userinfo?api-version=2"
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL                 = "${data.hsdp_config.iam.url}/authorize/oauth2/authorize?api-version=2"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID                = hsdp_iam_client.grafana[0].client_id
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET            = hsdp_iam_client.grafana[0].password
+      GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES             = "false"
+      GF_AUTH_GENERIC_OAUTH_ENABLED                  = "true"
+      GF_AUTH_GENERIC_OAUTH_SCOPES                   = "openid mail email"
+      GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE = "false"
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL                = "${data.hsdp_config.iam.url}/authorize/oauth2/token?api-version=2"
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP            = var.oauth_allow_signup
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE                  = var.auto_assign_org_role
+    } : {},
     var.environment,
     {
       GF_SECURITY_ADMIN_USER     = var.grafana_username
