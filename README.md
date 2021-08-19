@@ -13,73 +13,77 @@ Checkout the example in [examples/default](./examples/default)
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.14.0 |
-| cloudfoundry | >= 0.14.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.0 |
+| <a name="requirement_cloudfoundry"></a> [cloudfoundry](#requirement\_cloudfoundry) | >= 0.14.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| cloudfoundry | >= 0.14.1 |
-| hsdp | n/a |
-| random | n/a |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.14.1 |
+| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | n/a |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [cloudfoundry_app](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) |
-| [cloudfoundry_domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) |
-| [cloudfoundry_network_policy](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) |
-| [cloudfoundry_org](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/org) |
-| [cloudfoundry_route](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) |
-| [cloudfoundry_service](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) |
-| [cloudfoundry_service_instance](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) |
-| [cloudfoundry_service_key](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) |
-| [hsdp_config](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/data-sources/config) |
-| [hsdp_iam_client](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/resources/iam_client) |
-| [random_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) |
-| [random_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) |
+| Name | Type |
+|------|------|
+| [cloudfoundry_app.grafana](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
+| [cloudfoundry_app.pg_exporter](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/app) | resource |
+| [cloudfoundry_network_policy.grafana](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/network_policy) | resource |
+| [cloudfoundry_route.grafana](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
+| [cloudfoundry_route.pg_exporter](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/route) | resource |
+| [cloudfoundry_service_instance.database](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_instance) | resource |
+| [cloudfoundry_service_key.database_key](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/resources/service_key) | resource |
+| [hsdp_iam_client.grafana](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/resources/iam_client) | resource |
+| [random_password.client_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_uuid.client_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
+| [cloudfoundry_domain.domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
+| [cloudfoundry_domain.internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
+| [cloudfoundry_org.org](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/org) | data source |
+| [cloudfoundry_service.rds](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) | data source |
+| [hsdp_config.cf](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/data-sources/config) | data source |
+| [hsdp_config.iam](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/data-sources/config) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| auto\_assign\_org\_role | The default role to assign to auto signup users | `string` | `"Viewer"` | no |
-| cf\_domain\_name | The CF domain to use for Grafana | `string` | `""` | no |
-| cf\_org\_name | The CF Org to deploy under | `string` | n/a | yes |
-| cf\_space\_id | The id of the CF Space to deploy in | `string` | n/a | yes |
-| db\_broker | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
-| db\_json\_params | Optional DB JSON params | `string` | `"{}"` | no |
-| db\_plan | The Database plan to use | `string` | `"postgres-micro-dev"` | no |
-| disk | The amount of Disk space to allocate for Grafana (MB) | `number` | `1024` | no |
-| email\_domains | Allowed email domains for accessing Grafana | `list(string)` | <pre>[<br>  "philips.com"<br>]</pre> | no |
-| enable\_postgres | Enable or disables postgres persistence | `bool` | `true` | no |
-| environment | Environment variables for Grafana app | `map(any)` | `{}` | no |
-| grafana\_image | Grafana Docker image to use | `string` | `"grafana/grafana:8.0.6"` | no |
-| grafana\_password | The Grafana password to use | `string` | n/a | yes |
-| grafana\_username | The Grafana username to use | `string` | n/a | yes |
-| iam\_application\_id | The IAM application ID to create the OAuth2 client. If provided, Grafana will use IAM for authentication | `string` | `""` | no |
-| memory | The amount of RAM to allocate for Grafana (MB) | `number` | `512` | no |
-| name\_postfix | The postfix string to append to the hostname, prevents namespace clashes | `string` | n/a | yes |
-| network\_policies | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
-| oauth\_allow\_signup | Allow automatic signup when OAuth2 is enabled | `bool` | `false` | no |
-| pg\_exporter\_image | n/a | `string` | `"quay.io/prometheuscommunity/postgres-exporter:latest"` | no |
+| <a name="input_auto_assign_org_role"></a> [auto\_assign\_org\_role](#input\_auto\_assign\_org\_role) | The default role to assign to auto signup users | `string` | `"Viewer"` | no |
+| <a name="input_cf_domain_name"></a> [cf\_domain\_name](#input\_cf\_domain\_name) | The CF domain to use for Grafana | `string` | `""` | no |
+| <a name="input_cf_org_name"></a> [cf\_org\_name](#input\_cf\_org\_name) | The CF Org to deploy under | `string` | n/a | yes |
+| <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | The id of the CF Space to deploy in | `string` | n/a | yes |
+| <a name="input_db_broker"></a> [db\_broker](#input\_db\_broker) | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
+| <a name="input_db_json_params"></a> [db\_json\_params](#input\_db\_json\_params) | Optional DB JSON params | `string` | `"{}"` | no |
+| <a name="input_db_plan"></a> [db\_plan](#input\_db\_plan) | The Database plan to use | `string` | `"postgres-micro-dev"` | no |
+| <a name="input_disk"></a> [disk](#input\_disk) | The amount of Disk space to allocate for Grafana (MB) | `number` | `1024` | no |
+| <a name="input_email_domains"></a> [email\_domains](#input\_email\_domains) | Allowed email domains for accessing Grafana | `list(string)` | <pre>[<br>  "philips.com"<br>]</pre> | no |
+| <a name="input_enable_postgres"></a> [enable\_postgres](#input\_enable\_postgres) | Enable or disables postgres persistence | `bool` | `true` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana app | `map(any)` | `{}` | no |
+| <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | Grafana Docker image to use | `string` | `"grafana/grafana:8.0.6"` | no |
+| <a name="input_grafana_password"></a> [grafana\_password](#input\_grafana\_password) | The Grafana password to use | `string` | n/a | yes |
+| <a name="input_grafana_username"></a> [grafana\_username](#input\_grafana\_username) | The Grafana username to use | `string` | n/a | yes |
+| <a name="input_iam_application_id"></a> [iam\_application\_id](#input\_iam\_application\_id) | The IAM application ID to create the OAuth2 client. If provided, Grafana will use IAM for authentication | `string` | `""` | no |
+| <a name="input_memory"></a> [memory](#input\_memory) | The amount of RAM to allocate for Grafana (MB) | `number` | `512` | no |
+| <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the hostname, prevents namespace clashes | `string` | n/a | yes |
+| <a name="input_network_policies"></a> [network\_policies](#input\_network\_policies) | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
+| <a name="input_oauth_allow_signup"></a> [oauth\_allow\_signup](#input\_oauth\_allow\_signup) | Allow automatic signup when OAuth2 is enabled | `bool` | `false` | no |
+| <a name="input_pg_exporter_image"></a> [pg\_exporter\_image](#input\_pg\_exporter\_image) | n/a | `string` | `"quay.io/prometheuscommunity/postgres-exporter:latest"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| grafana\_database\_metrics\_app\_id | The metrics app ID |
-| grafana\_database\_metrics\_endpoint | The internal metrics endpoint for the Grafana database |
-| grafana\_database\_metrics\_host | The Grafana metrics internal hostname |
-| grafana\_database\_metrics\_port | The Grafana metrics internal port |
-| grafana\_endpoint | The endpoint where Grafana is reachable on |
-| grafana\_id | The Grafana app ID |
+| <a name="output_grafana_database_metrics_app_id"></a> [grafana\_database\_metrics\_app\_id](#output\_grafana\_database\_metrics\_app\_id) | The metrics app ID |
+| <a name="output_grafana_database_metrics_endpoint"></a> [grafana\_database\_metrics\_endpoint](#output\_grafana\_database\_metrics\_endpoint) | The internal metrics endpoint for the Grafana database |
+| <a name="output_grafana_database_metrics_host"></a> [grafana\_database\_metrics\_host](#output\_grafana\_database\_metrics\_host) | The Grafana metrics internal hostname |
+| <a name="output_grafana_database_metrics_port"></a> [grafana\_database\_metrics\_port](#output\_grafana\_database\_metrics\_port) | The Grafana metrics internal port |
+| <a name="output_grafana_endpoint"></a> [grafana\_endpoint](#output\_grafana\_endpoint) | The endpoint where Grafana is reachable on |
+| <a name="output_grafana_id"></a> [grafana\_id](#output\_grafana\_id) | The Grafana app ID |
 
 <!--- END_TF_DOCS --->
 
