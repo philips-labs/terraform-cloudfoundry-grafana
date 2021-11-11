@@ -19,7 +19,7 @@ resource "random_uuid" "client_uuid" {
 resource "hsdp_iam_client" "grafana" {
   count               = local.iam_integration ? 1 : 0
   type                = "Confidential"
-  name                = "Grafana"
+  name                = "TF_GRAFANA_${local.name}"
   description         = "Grafana OAuth2 Client"
   client_id           = "tf_${local.name}"
   global_reference_id = random_uuid.client_uuid.result
