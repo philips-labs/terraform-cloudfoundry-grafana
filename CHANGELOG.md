@@ -4,8 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
+## v0.16.0
+
+- Upgrade Grafana to 8.3.1
+
 ## v0.15.0
 
+- Dependency upgrades
 
 ## v0.14.0
 
