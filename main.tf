@@ -71,6 +71,14 @@ resource "cloudfoundry_app" "grafana" {
   routes {
     route = cloudfoundry_route.grafana.id
   }
+
+  dynamic "service_binding" {
+    for_each = var.grafana_service_bindings
+
+    content {
+      service_instance = service_binding.value.service_instance
+    }
+  }
 }
 
 resource "cloudfoundry_service_instance" "database" {

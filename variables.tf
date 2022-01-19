@@ -106,3 +106,9 @@ variable "auto_assign_org_role" {
   description = "The default role to assign to auto signup users"
   default     = "Viewer"
 }
+
+variable "grafana_service_bindings" {
+  type        = list(object({ service_instance = string }))
+  description = "A list of service instances that should be bound to the grafana app"
+  default     = []
+}
