@@ -34,6 +34,10 @@ resource "cloudfoundry_app" "grafana" {
   memory       = var.memory
   disk_quota   = var.disk
   docker_image = var.grafana_image
+  docker_credentials = {
+    username = var.docker_username
+    password = var.docker_password
+  }
   environment = merge(
     var.enable_postgres ?
     {

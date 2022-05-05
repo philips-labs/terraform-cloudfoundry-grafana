@@ -112,3 +112,15 @@ variable "grafana_service_bindings" {
   description = "A list of service instances that should be bound to the grafana app"
   default     = []
 }
+
+variable "docker_username" {
+  type        = string
+  description = "Docker registry username"
+  default     = ""
+}
+
+variable "docker_password" {
+  type        = string
+  description = "Docker registry password"
+  default     = ""
+}
