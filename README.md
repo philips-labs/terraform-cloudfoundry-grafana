@@ -8,8 +8,6 @@ Checkout the example in [examples/default](./examples/default)
 
 <!--- BEGIN_TF_DOCS --->
 
-## Requirements
-
 | Name                                                                              | Version   |
 | --------------------------------------------------------------------------------- | --------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement_terraform)          | >= 0.14.0 |
@@ -60,8 +58,6 @@ No modules.
 | <a name="input_db_json_params"></a> [db_json_params](#input_db_json_params)                               | Optional DB JSON params                                                                                  | `string`                                                                                              | `"{}"`                                                   |    no    |
 | <a name="input_db_plan"></a> [db_plan](#input_db_plan)                                                    | The Database plan to use                                                                                 | `string`                                                                                              | `"postgres-micro-dev"`                                   |    no    |
 | <a name="input_disk"></a> [disk](#input_disk)                                                             | The amount of Disk space to allocate for Grafana (MB)                                                    | `number`                                                                                              | `1024`                                                   |    no    |
-| <a name="input_docker_password"></a> [docker_password](#input_docker_password)                            | Docker registry password                                                                                 | `string`                                                                                              | `""`                                                     |    no    |
-| <a name="input_docker_username"></a> [docker_username](#input_docker_username)                            | Docker registry username                                                                                 | `string`                                                                                              | `""`                                                     |    no    |
 | <a name="input_email_domains"></a> [email_domains](#input_email_domains)                                  | Allowed email domains for accessing Grafana                                                              | `list(string)`                                                                                        | <pre>[<br> "philips.com"<br>]</pre>                      |    no    |
 | <a name="input_enable_postgres"></a> [enable_postgres](#input_enable_postgres)                            | Enable or disables postgres persistence                                                                  | `bool`                                                                                                | `true`                                                   |    no    |
 | <a name="input_environment"></a> [environment](#input_environment)                                        | Environment variables for Grafana app                                                                    | `map(any)`                                                                                            | `{}`                                                     |    no    |
