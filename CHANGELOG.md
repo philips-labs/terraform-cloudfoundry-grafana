@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
+## Github Changelog
+
+For current changelogs please check the Github releases:
+https://github.com/philips-labs/terraform-cloudfoundry-grafana/releases
+
 ## v0.16.0
 
 - Upgrade Grafana to 8.3.1

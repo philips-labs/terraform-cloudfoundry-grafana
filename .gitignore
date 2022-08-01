@@ -6,3 +6,4 @@ local.yml
 *.tfstate*
 *.zip
 .env
+.terraform.lock.hcl
