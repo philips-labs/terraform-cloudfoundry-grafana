@@ -72,6 +72,8 @@ No modules.
 | <a name="input_memory"></a> [memory](#input\_memory) | The amount of RAM to allocate for Grafana (MB) | `number` | `512` | no |
 | <a name="input_name_postfix"></a> [name\_postfix](#input\_name\_postfix) | The postfix string to append to the hostname, prevents namespace clashes | `string` | n/a | yes |
 | <a name="input_network_policies"></a> [network\_policies](#input\_network\_policies) | The container-to-container network policies to create with Grafana as the source app | <pre>list(object({<br>    destination_app = string<br>    protocol        = string<br>    port            = string<br>  }))</pre> | `[]` | no |
+| <a name="input_oauth2_client_id"></a> [oauth2\_client\_id](#input\_oauth2\_client\_id) | The OAuth2 client ID to use for Grafana integration with IAM | `string` | `""` | no |
+| <a name="input_oauth2_client_password"></a> [oauth2\_client\_password](#input\_oauth2\_client\_password) | The OAuth2 client password to use for Grafana integration with IAM | `string` | `""` | no |
 | <a name="input_oauth_allow_signup"></a> [oauth\_allow\_signup](#input\_oauth\_allow\_signup) | Allow automatic signup when OAuth2 is enabled | `bool` | `false` | no |
 | <a name="input_pg_exporter_image"></a> [pg\_exporter\_image](#input\_pg\_exporter\_image) | n/a | `string` | `"quay.io/prometheuscommunity/postgres-exporter:latest"` | no |
 
