@@ -55,8 +55,8 @@ resource "cloudfoundry_app" "grafana" {
       GF_AUTH_GENERIC_OAUTH_ALLOWED_DOMAINS          = join(",", var.email_domains)
       GF_AUTH_GENERIC_OAUTH_API_URL                  = "${data.hsdp_config.iam.url}/authorize/oauth2/userinfo?api-version=2"
       GF_AUTH_GENERIC_OAUTH_AUTH_URL                 = "${data.hsdp_config.iam.url}/authorize/oauth2/authorize?api-version=2"
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID                = hsdp_iam_client.grafana[0].client_id
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET            = hsdp_iam_client.grafana[0].password
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID                = local.oauth2_client_id
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET            = local.oauth2_client_password
       GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES             = "false"
       GF_AUTH_GENERIC_OAUTH_ENABLED                  = "true"
       GF_AUTH_GENERIC_OAUTH_SCOPES                   = "openid mail email"
