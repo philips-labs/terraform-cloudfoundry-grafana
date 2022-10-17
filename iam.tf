@@ -1,8 +1,8 @@
 locals {
-  iam_integration = var.iam_application_id != "" || (var.oauth2_client_id != ""  && var.oauth2_client_password != "")
+  iam_integration     = var.iam_application_id != "" || (var.oauth2_client_id != "" && var.oauth2_client_password != "")
   self_managed_client = var.iam_application_id != ""
-  client_id = local.self_managed_client ? hsdp_iam_client.grafana[0].client_id : var.oauth2_client_id
-  client_password = local.self_managed_client ? random_password.client_password.result : var.oauth2_client_password
+  client_id           = local.self_managed_client ? hsdp_iam_client.grafana[0].client_id : var.oauth2_client_id
+  client_password     = local.self_managed_client ? random_password.client_password.result : var.oauth2_client_password
 }
 
 resource "random_password" "client_password" {

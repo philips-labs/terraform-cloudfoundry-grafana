@@ -90,16 +90,16 @@ variable "iam_application_id" {
 }
 
 variable "oauth2_client_id" {
-  type = string
+  type        = string
   description = "The OAuth2 client ID to use for Grafana integration with IAM"
-  default = ""
+  default     = ""
 }
 
 variable "oauth2_client_password" {
- type = string
- sensitive = true
+  type        = string
+  sensitive   = true
   description = "The OAuth2 client password to use for Grafana integration with IAM"
-  default = ""
+  default     = ""
 }
 
 variable "email_domains" {
