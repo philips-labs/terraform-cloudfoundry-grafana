@@ -45,6 +45,11 @@ variable "disk" {
   description = "The amount of Disk space to allocate for Grafana (MB)"
   default     = 1024
 }
+variable "strategy" {
+  type        = string
+  description = "The deployment strategy to use"
+  default     = "rolling"
+}
 variable "db_broker" {
   type        = string
   description = "The Database broker to use for requesting a PostgreSQL database"

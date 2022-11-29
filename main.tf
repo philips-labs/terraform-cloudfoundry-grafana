@@ -33,6 +33,7 @@ resource "cloudfoundry_app" "grafana" {
   space        = var.cf_space_id
   memory       = var.memory
   disk_quota   = var.disk
+  strategy     = var.strategy
   docker_image = var.grafana_image
   docker_credentials = {
     username = var.docker_username
