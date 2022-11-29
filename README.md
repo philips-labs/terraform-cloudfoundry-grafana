@@ -11,15 +11,16 @@ Checkout the example in [examples/default](./examples/default)
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.0 |
-| <a name="requirement_cloudfoundry"></a> [cloudfoundry](#requirement\_cloudfoundry) | >= 0.14.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
+| <a name="requirement_cloudfoundry"></a> [cloudfoundry](#requirement\_cloudfoundry) | >= 0.50.1 |
+| <a name="requirement_hsdp"></a> [hsdp](#requirement\_hsdp) | >= 0.38.15 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.14.1 |
-| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | n/a |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.50.1 |
+| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | >= 0.38.15 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -76,6 +77,7 @@ No modules.
 | <a name="input_oauth2_client_password"></a> [oauth2\_client\_password](#input\_oauth2\_client\_password) | The OAuth2 client password to use for Grafana integration with IAM | `string` | `""` | no |
 | <a name="input_oauth_allow_signup"></a> [oauth\_allow\_signup](#input\_oauth\_allow\_signup) | Allow automatic signup when OAuth2 is enabled | `bool` | `false` | no |
 | <a name="input_pg_exporter_image"></a> [pg\_exporter\_image](#input\_pg\_exporter\_image) | n/a | `string` | `"quay.io/prometheuscommunity/postgres-exporter:latest"` | no |
+| <a name="input_strategy"></a> [strategy](#input\_strategy) | The deployment strategy to use | `string` | `"rolling"` | no |
 
 ## Outputs
 
