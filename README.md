@@ -19,9 +19,9 @@ Checkout the example in [examples/default](./examples/default)
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | 0.15.5 |
-| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | 0.36.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.50.1 |
+| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | >= 0.38.15 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
 
