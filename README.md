@@ -19,9 +19,9 @@ Checkout the example in [examples/default](./examples/default)
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.50.1 |
-| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | >= 0.38.15 |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | 0.15.5 |
+| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | 0.36.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
 
 ## Modules
 
@@ -65,7 +65,7 @@ No modules.
 | <a name="input_email_domains"></a> [email\_domains](#input\_email\_domains) | Allowed email domains for accessing Grafana | `list(string)` | <pre>[<br>  "philips.com"<br>]</pre> | no |
 | <a name="input_enable_postgres"></a> [enable\_postgres](#input\_enable\_postgres) | Enable or disables postgres persistence | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana app | `map(any)` | `{}` | no |
-| <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | Grafana Docker image to use | `string` | `"grafana/grafana:9.3.1"` | no |
+| <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | Grafana Docker image to use | `string` | `"grafana/grafana:9.4.7"` | no |
 | <a name="input_grafana_password"></a> [grafana\_password](#input\_grafana\_password) | The Grafana password to use | `string` | n/a | yes |
 | <a name="input_grafana_service_bindings"></a> [grafana\_service\_bindings](#input\_grafana\_service\_bindings) | A list of service instances that should be bound to the grafana app | `list(object({ service_instance = string }))` | `[]` | no |
 | <a name="input_grafana_username"></a> [grafana\_username](#input\_grafana\_username) | The Grafana username to use | `string` | n/a | yes |
