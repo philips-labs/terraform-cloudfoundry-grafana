@@ -1,7 +1,3 @@
-data "cloudfoundry_org" "org" {
-  name = var.cf_org_name
-}
-
 data "cloudfoundry_service" "rds" {
   name = var.db_broker
 }

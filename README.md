@@ -43,7 +43,6 @@ No modules.
 | [random_uuid.client_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
 | [cloudfoundry_domain.domain](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
 | [cloudfoundry_domain.internal](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/domain) | data source |
-| [cloudfoundry_org.org](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/org) | data source |
 | [cloudfoundry_service.rds](https://registry.terraform.io/providers/cloudfoundry-community/cloudfoundry/latest/docs/data-sources/service) | data source |
 | [hsdp_config.cf](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/data-sources/config) | data source |
 | [hsdp_config.iam](https://registry.terraform.io/providers/philips-software/hsdp/latest/docs/data-sources/config) | data source |
@@ -54,7 +53,6 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_auto_assign_org_role"></a> [auto\_assign\_org\_role](#input\_auto\_assign\_org\_role) | The default role to assign to auto signup users | `string` | `"Viewer"` | no |
 | <a name="input_cf_domain_name"></a> [cf\_domain\_name](#input\_cf\_domain\_name) | The CF domain to use for Grafana | `string` | `""` | no |
-| <a name="input_cf_org_name"></a> [cf\_org\_name](#input\_cf\_org\_name) | The CF Org to deploy under | `string` | n/a | yes |
 | <a name="input_cf_space_id"></a> [cf\_space\_id](#input\_cf\_space\_id) | The id of the CF Space to deploy in | `string` | n/a | yes |
 | <a name="input_db_broker"></a> [db\_broker](#input\_db\_broker) | The Database broker to use for requesting a PostgreSQL database | `string` | `"hsdp-rds"` | no |
 | <a name="input_db_json_params"></a> [db\_json\_params](#input\_db\_json\_params) | Optional DB JSON params | `string` | `"{}"` | no |
