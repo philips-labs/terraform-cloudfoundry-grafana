@@ -11,16 +11,16 @@ Checkout the example in [examples/default](./examples/default)
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
-| <a name="requirement_cloudfoundry"></a> [cloudfoundry](#requirement\_cloudfoundry) | >= 0.50.1 |
-| <a name="requirement_hsdp"></a> [hsdp](#requirement\_hsdp) | >= 0.38.15 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_cloudfoundry"></a> [cloudfoundry](#requirement\_cloudfoundry) | >= 0.50.6 |
+| <a name="requirement_hsdp"></a> [hsdp](#requirement\_hsdp) | >= 0.42.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.50.1 |
-| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | >= 0.38.15 |
+| <a name="provider_cloudfoundry"></a> [cloudfoundry](#provider\_cloudfoundry) | >= 0.50.6 |
+| <a name="provider_hsdp"></a> [hsdp](#provider\_hsdp) | >= 0.42.1 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
