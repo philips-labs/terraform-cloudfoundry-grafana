@@ -1,7 +1,7 @@
 variable "grafana_image" {
   type        = string
   description = "Grafana Docker image to use"
-  default     = "grafana/grafana:9.5.2"
+  default     = "grafana/grafana:10.1.1"
 }
 variable "cf_space_id" {
   type        = string
