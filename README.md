@@ -63,7 +63,7 @@ No modules.
 | <a name="input_email_domains"></a> [email\_domains](#input\_email\_domains) | Allowed email domains for accessing Grafana | `list(string)` | <pre>[<br>  "philips.com"<br>]</pre> | no |
 | <a name="input_enable_postgres"></a> [enable\_postgres](#input\_enable\_postgres) | Enable or disables postgres persistence | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment variables for Grafana app | `map(any)` | `{}` | no |
-| <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | Grafana Docker image to use | `string` | `"grafana/grafana:10.1.1"` | no |
+| <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | Grafana Docker image to use | `string` | `"grafana/grafana:10.2.2"` | no |
 | <a name="input_grafana_password"></a> [grafana\_password](#input\_grafana\_password) | The Grafana password to use | `string` | n/a | yes |
 | <a name="input_grafana_service_bindings"></a> [grafana\_service\_bindings](#input\_grafana\_service\_bindings) | A list of service instances that should be bound to the grafana app | `list(object({ service_instance = string }))` | `[]` | no |
 | <a name="input_grafana_username"></a> [grafana\_username](#input\_grafana\_username) | The Grafana username to use | `string` | n/a | yes |

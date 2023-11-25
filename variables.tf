@@ -1,7 +1,7 @@
 variable "grafana_image" {
   type        = string
   description = "Grafana Docker image to use"
-  default     = "grafana/grafana:10.1.1"
+  default     = "grafana/grafana:10.2.2"
 }
 variable "cf_space_id" {
   type        = string
@@ -98,9 +98,9 @@ variable "oauth2_client_id" {
 
 variable "oauth2_client_password" {
   type        = string
-  sensitive   = true
   description = "The OAuth2 client password to use for Grafana integration with IAM"
   default     = ""
+  sensitive   = true
 }
 
 variable "email_domains" {
