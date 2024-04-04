@@ -6,6 +6,13 @@ Deploys a Grafana instance to Cloud foundry
 
 Checkout the example in [examples/default](./examples/default)
 
+## Disclaimer
+
+> [!Important]
+> This repository is managed as Philips Inner-source / Open-source.
+> This repository is NOT endorsed or supported by HSSA&P, I&S Cloud Operations and/or the HSP AWS Account team. 
+> You are expected to self-support or raise tickets on the Github project and NOT raise tickets in HSP ServiceNow. 
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
